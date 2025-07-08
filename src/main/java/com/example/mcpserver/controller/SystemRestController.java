@@ -1,15 +1,12 @@
 package com.example.mcpserver.controller;
 
-import com.example.mcpserver.entity.ChinaCity;
-import com.example.mcpserver.entity.CityLocation;
+import com.example.mcpserver.entity.ChinaArea;
 import com.example.mcpserver.entity.Demo;
-import com.example.mcpserver.entity.District;
 import com.example.mcpserver.service.DBService;
 import com.example.mcpserver.service.LocationService;
 import com.example.mcpserver.service.WeatherService;
 import jakarta.annotation.Resource;
 import jakarta.websocket.server.PathParam;
-import java.util.UUID;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -39,8 +36,8 @@ public class SystemRestController {
      * @return
      */
     @GetMapping("/location")
-    public District location(@PathParam(value = "city") String city) {
-        District district = locationService.getDistrictByPinyin(city);
+    public ChinaArea location(@PathParam(value = "city") String city) {
+        ChinaArea district = locationService.getChinaAreaByPinyin(city);
         return district;
     }
 

@@ -6,11 +6,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "china_area")
 public class ChinaArea {
@@ -23,34 +29,43 @@ public class ChinaArea {
   @Column(name = "pid")
   private Integer pid;
 
-  @Column(name = "shortname", length = 100)
-  private String shortname;
-
   @Column(name = "name", length = 100)
   private String name;
 
-  @Column(name = "mergename")
-  private String mergename;
+  @Column(name = "short_name", length = 100)
+  private String shortName;
+
+  @Column(name = "merge_name")
+  private String mergeName;
 
   @Column(name = "level")
   private Byte level;
 
+  @Column(name = "suffix", length = 50)
+  private String suffix;
+
   @Column(name = "pinyin", length = 100)
   private String pinyin;
 
-  @Column(name = "code", length = 100)
-  private String code;
+  @Column(name = "initial", length = 50)
+  private String initial;
 
-  @Column(name = "zip", length = 100)
-  private String zip;
-
-  @Column(name = "first", length = 50)
-  private String first;
+  @Column(name = "initials", length = 50)
+  private String initials;
 
   @Column(name = "lng", length = 100)
   private String lng;
 
   @Column(name = "lat", length = 100)
   private String lat;
+
+  @Column(name = "zip_code", length = 100)
+  private String zipCode;
+
+  @Column(name = "area_code", length = 100)
+  private String areaCode;
+
+  @Column(name = "region_code", length = 50)
+  private String regionCode;
 
 }

@@ -1,8 +1,8 @@
 package com.example.mcpserver.service;
 
-import com.example.mcpserver.entity.CityLocation;
+import com.example.mcpserver.entity.ChinaArea;
 import com.example.mcpserver.entity.District;
-import com.example.mcpserver.repository.CityLocationRepository;
+import com.example.mcpserver.repository.ChinaAreaRepository;
 import com.example.mcpserver.repository.DistrictRepository;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -17,26 +17,26 @@ public class LocationService {
     private DistrictRepository districtRepository;
 
     @Resource
-    private CityLocationRepository cityLocationRepository;
+    private ChinaAreaRepository chinaAreaRepository;
 
 
     @Tool(name = "getDistrictByPinyin", description = "根据城市pinyin编码获取城市信息")
-    public District getDistrictByPinyin(String pinyin) {
+    public ChinaArea getChinaAreaByPinyin(String pinyin) {
         log.info("================根据城市拼音{}获取城市地理信息。。。。。。。。。。", pinyin);
         if (pinyin == null) {
-            return District.builder().build();
+            return ChinaArea.builder().build();
         }
         if (pinyin.length() == 1) {
-            return getDistrictByInitials(pinyin);
+            return getChinaAreaByInitials(pinyin);
         }
 
-        return districtRepository.findByPinyin(pinyin).orElse(District.builder().build());
+        return chinaAreaRepository.findByPinyin(pinyin).orElse(ChinaArea.builder().build());
     }
 
     @Tool(name = "getCityLocationByCode", description = "根据城市编码获取城市坐标")
-    public District getCityLocationByCode(String code) {
+    public ChinaArea getCityLocationByCode(String code) {
         log.info("================根据城市编码{}获取城市地理信息。。。。。。。。。。", code);
-        return districtRepository.findByCode(code).orElse(District.builder().build());
+        return chinaAreaRepository.findByCode(code).orElse(ChinaArea.builder().build());
     }
 
 
@@ -53,8 +53,8 @@ public class LocationService {
         return districtRepository.findByCode(code).orElse(District.builder().build());
     }
 
-    public District getDistrictByInitials(String initials) {
-        return districtRepository.findByInitials(initials).orElse(District.builder().build());
+    public ChinaArea getChinaAreaByInitials(String initials) {
+        return chinaAreaRepository.findByInitials(initials).orElse(ChinaArea.builder().build());
     }
 
     public District getCityLocation(Integer id) {
