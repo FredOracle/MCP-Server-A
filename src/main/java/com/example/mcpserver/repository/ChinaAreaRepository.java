@@ -10,7 +10,7 @@ public interface ChinaAreaRepository extends JpaRepository<ChinaArea, Integer> {
 
   Optional<ChinaArea> findByInitials(String initials);
 
-  Optional<ChinaArea> findByCode(String code);
+  Optional<ChinaArea> findByRegionCode(String code);
 
   Optional<ChinaArea> findByPinyin(String pinyin);
 }

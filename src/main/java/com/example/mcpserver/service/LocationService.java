@@ -36,7 +36,7 @@ public class LocationService {
     @Tool(name = "getCityLocationByCode", description = "根据城市编码获取城市坐标")
     public ChinaArea getCityLocationByCode(String code) {
         log.info("================根据城市编码{}获取城市地理信息。。。。。。。。。。", code);
-        return chinaAreaRepository.findByCode(code).orElse(ChinaArea.builder().build());
+        return chinaAreaRepository.findByRegionCode(code).orElse(ChinaArea.builder().build());
     }
 
 
