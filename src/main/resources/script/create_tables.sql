@@ -3,9 +3,9 @@ create table china_area
     id          int auto_increment comment 'ID'
         primary key,
     pid         int          null comment '父id',
-    shortname   varchar(100) null comment '简称',
+    short_name   varchar(100) null comment '简称',
     name        varchar(100) null comment '名称',
-    mergename   varchar(255) null comment '全称',
+    merge_name   varchar(255) null comment '全称',
     level       tinyint      null comment '层级 0 1 2 省市区县',
     pinyin      varchar(100) null comment '拼音',
     area_code   varchar(100) null comment '电话长途区号',

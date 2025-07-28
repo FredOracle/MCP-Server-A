@@ -30,13 +30,13 @@ public class LocationService {
             return getChinaAreaByInitials(pinyin);
         }
 
-        return chinaAreaRepository.findByPinyin(pinyin).orElse(ChinaArea.builder().build());
+        return chinaAreaRepository.findByPinyin(pinyin).stream().findFirst().orElse(ChinaArea.builder().build());
     }
 
     @Tool(name = "getCityLocationByCode", description = "根据城市编码获取城市坐标")
     public ChinaArea getCityLocationByCode(String code) {
         log.info("================根据城市编码{}获取城市地理信息。。。。。。。。。。", code);
-        return chinaAreaRepository.findByCode(code).orElse(ChinaArea.builder().build());
+        return chinaAreaRepository.findByZipCode(code).orElse(ChinaArea.builder().build());
     }
 
 
@@ -54,7 +54,7 @@ public class LocationService {
     }
 
     public ChinaArea getChinaAreaByInitials(String initials) {
-        return chinaAreaRepository.findByInitials(initials).orElse(ChinaArea.builder().build());
+        return chinaAreaRepository.findByInitials(initials).stream().findFirst().orElse(ChinaArea.builder().build());
     }
 
     public District getCityLocation(Integer id) {
